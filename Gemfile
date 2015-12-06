@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'bootstrap_form'
 gem 'haml-rails'
+gem 'devise'
 
 group :development do
   gem 'thin'
