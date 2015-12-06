@@ -1,0 +1,6 @@
+%article.products_index
+  %header
+    - @products.each do |product|
+      .products.row
+        .products.col-sm-2
+          %h3= link_to product.title, admin_product_path(product)
