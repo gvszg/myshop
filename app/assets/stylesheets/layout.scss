@@ -42,3 +42,61 @@ footer.container {
     }
   }
 }
+
+/* admin layout */
+
+/* admin header */
+
+body {
+  admin_header {
+    
+  }
+}
+
+/* admin main section*/
+
+admin_section.content.clearfix {
+  .row {
+    ul.nav.nav-pills.nav-stacked {
+      max-width: 200px;
+      background-color: #dff0d8;
+
+      li {
+        a {
+          color: #a94442;
+        }
+      }
+    }
+
+    .dashboard.row {
+      max-width: 1550px;
+
+      h1 {
+        font-size: 30px;
+      }
+    }
+
+    
+  }
+}
+
+/* admin footer.container */
+
+admin_footer.container {
+  margin: auto;
+  
+  margin-top: 80px;
+  color: white;
+
+  .footer {
+    background-color: black;
+    border-radius: 5px;
+    height: 50px;
+
+    .text {        
+      font-size: 15px;      
+      text-indent: 10px;
+      padding-top: 14px;   
+    }
+  }
+}

@@ -9,8 +9,16 @@
     = csrf_meta_tags
   %body
     %admin_header
-      = render 'shared/admin_header'
-    %section.content.clearfix
-      = yield
-    %footer.container
-      &copy 2015 MyShop
+      = render 'shared/admin_header'      
+    %admin_section.content.clearfix
+      .row
+        .col-md-1
+          %ul.nav.nav-pills.nav-stacked
+            %li
+              = link_to("Products", admin_products_path)
+        .dashboard.row.col-md-offset-1
+          %h1 Dashboard
+          = yield
+    %admin_footer.container
+      .footer
+        .text &copy 2015 MyShop
