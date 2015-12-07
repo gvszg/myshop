@@ -1,0 +1,44 @@
+/* header */
+
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  
+  header {
+    .navbar {
+      margin: auto;
+      margin-bottom: 50px;
+      width: 1140px;
+      
+    }
+  }
+}
+
+/* main section */
+
+section.content.clearfix {
+  section {
+    
+  }
+}
+
+/* footer.container */
+
+footer.container {
+  margin: auto;
+  
+  margin-top: 80px;
+  color: white;
+
+  .footer {
+    background-color: black;
+    border-radius: 5px;
+    height: 50px;
+
+    .text {        
+      font-size: 15px;      
+      text-indent: 10px;
+      padding-top: 14px;   
+    }
+  }
+}

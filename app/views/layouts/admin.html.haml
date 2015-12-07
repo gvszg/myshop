@@ -8,10 +8,9 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    %header
-      = render 'shared/header' 
+    %admin_header
+      = render 'shared/admin_header'
     %section.content.clearfix
       = yield
     %footer.container
-      .footer
-        .text &copy 2015 MyShop
+      &copy 2015 MyShop
