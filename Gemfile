@@ -11,6 +11,9 @@ gem 'bootstrap-sass'
 gem 'bootstrap_form'
 gem 'haml-rails'
 gem 'devise'
+gem 'carrierwave'
+gem "mini_magick"
+gem "nested_form"
 
 group :development do
   gem 'thin'

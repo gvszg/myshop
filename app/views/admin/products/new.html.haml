@@ -1,17 +1,31 @@
 %section.new_product.container
   .row
     .col-sm-10.col-sm-offset-1      
-      = bootstrap_form_for([:admin, @product], layout: :horizontal, label_col: "col-sm-2", control_col: "col-sm-6") do |f|
+      = form_for [:admin, @product], html: { class: "form-horizontal" } do |f|
         %header
           %h1 Add new product
-        %fieldset  
-          = f.text_field :title, label: "Title"
-        
-          = f.text_area :description, rows: 6, label: "Description"
-          
-          = f.text_field :quantity, label: "Quantity"
-                  
-          = f.text_field :price, label: "Price"
+        %fieldset
+          .form-group
+            = f.label :title, "Title", class: "control-label col-sm-2"
+            .col-sm-6
+              = f.text_field :title, class: "form-control" 
+          .form-group
+            = f.label :description, "Description", class: "control-label col-sm-2" 
+            .col-sm-6
+              = f.text_area :description, rows: 6, class: "form-control"
+          .form-group
+            = f.label :quantity, "Quantity", class: "control-label col-sm-2"
+            .col-sm-6
+              = f.text_field :quantity, class: "form-control"
+          .form-group
+            = f.label :price, "Price", class: "control-label col-sm-2"
+            .col-sm-6      
+              = f.text_field :price, class: "form-control"
+          .form-group
+            = f.fields_for :photos do |photo|
+              = photo.label :image, 'Image', class: "col-md-2 control-label"
+              .col-sm-1
+                = photo.file_field :image
         %fieldset.actions.control-group.col-sm-offset-2
           .controls  
             = f.submit "Submit", class: "btn btn-default"
