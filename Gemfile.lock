@@ -28,6 +28,9 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.8)
+    annotate (2.6.10)
+      activerecord (>= 3.2, <= 4.3)
+      rake (~> 10.4)
     arel (5.0.1.20140414130214)
     autoprefixer-rails (6.1.0.1)
       execjs
@@ -83,6 +86,8 @@ GEM
     fabrication (2.14.1)
     faker (1.6.1)
       i18n (~> 0.5)
+    font-awesome-rails (4.5.0.0)
+      railties (>= 3.2, < 5.0)
     haml (4.0.7)
       tilt
     haml-rails (0.9.0)
@@ -215,6 +220,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  annotate
   better_errors
   binding_of_caller
   bootstrap-sass
@@ -227,6 +233,7 @@ DEPENDENCIES
   devise
   fabrication
   faker
+  font-awesome-rails
   haml-rails
   jquery-rails
   launchy

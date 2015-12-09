@@ -14,12 +14,14 @@ gem 'devise'
 gem 'carrierwave'
 gem "mini_magick"
 gem "nested_form"
+gem "font-awesome-rails"
 
 group :development do
   gem 'thin'
   gem "better_errors"
   gem "binding_of_caller"
   gem 'letter_opener'
+  gem "annotate"
 end
 
 group :development, :test do

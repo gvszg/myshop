@@ -12,6 +12,10 @@
         %li.active
           %a{:href => "#"} Products        
       %ul.nav.navbar-nav.navbar-right
+        %li
+          = link_to '#' do
+            Your Cart
+            %i.fa.fa-shopping-cart (0)
         - if !current_user
           %li= link_to "Sign In", new_user_session_path
         - else
@@ -19,6 +23,7 @@
             %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
               Hi, #{current_user.email}
               %span.caret
-            %ul.dropdown-menu          
+            %ul.dropdown-menu
+              %li= link_to "Admin menu", admin_products_path if current_user.admin?
               %li= link_to "Sign Out", destroy_user_session_path, method: :delete
               

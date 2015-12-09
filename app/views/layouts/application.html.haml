@@ -9,7 +9,8 @@
     = csrf_meta_tags
   %body
     %header
-      = render 'shared/header' 
+      = render 'shared/header'
+      = notice_message
     %section.content.clearfix
       = yield
     %footer.container
