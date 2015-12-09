@@ -1,0 +1,24 @@
+article.admin_products_index {
+  h2 {
+    font-size: 20px;
+    margin-top: 30px;
+  }
+
+  .new_button {
+    padding-bottom: 20px;
+  }
+
+  .section.products_index {
+    table.table.table-bordered {
+      thead {
+        th.pictures {
+          width: 500px;
+        }
+
+        th.options{
+          width: 200px;
+        }
+      }
+    }
+  }
+}

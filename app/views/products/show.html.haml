@@ -1,0 +1,13 @@
+%article.product.show
+  .row
+    .col-md-5
+      = product_photo(@product.default_photo, :medium)
+    .col-md-7
+      %h2= @product.title
+      %div
+        %p= @product.description
+      %div{:style => "margin-top:50px;"} 數量 : #{@product.quantity}
+      .product-price
+        $ #{@product.price}
+      .pull-right
+        = link_to("加入購物車", "#", :class => "btn btn-primary btn-lg btn-danger")

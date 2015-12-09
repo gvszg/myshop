@@ -1,0 +1,6 @@
+.products.row
+  .products.col-sm-3.col-xs-6
+    = link_to product do
+      = product_photo(product.default_photo)
+    = product.title
+    $ #{product.price}

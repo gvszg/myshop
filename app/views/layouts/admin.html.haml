@@ -1,0 +1,25 @@
+!!!5
+%html(lang="en-US")
+  %head
+    %title MyShop
+    %meta(charset="UTF-8")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body
+    %admin_header
+      = render 'shared/admin_header'
+      = notice_message
+    %admin_section.content.clearfix
+      .row
+        .col-md-1
+          %ul.nav.nav-pills.nav-stacked
+            %li
+              = link_to("Products", admin_products_path)
+        .dashboard.row.col-md-offset-1
+          %h1 Dashboard
+          = yield
+    %admin_footer.container
+      .footer
+        .text &copy 2015 MyShop
