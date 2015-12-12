@@ -11,8 +11,8 @@ article.cart.items.index {
       font-family: monospace;
       text-align: right;
 
-      span {
-        
+      span#cart_index_price {         
+        color: #509C04;        
       }
     }
 }
