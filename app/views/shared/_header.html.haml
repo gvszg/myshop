@@ -15,7 +15,7 @@
         %li
           = link_to '#' do
             Your Cart
-            %i.fa.fa-shopping-cart (0)
+            %i.fa.fa-shopping-cart (#{cart_items_count(current_cart)})
         - if !current_user
           %li= link_to "Sign In", new_user_session_path
         - else
@@ -26,4 +26,3 @@
             %ul.dropdown-menu
               %li= link_to "Admin menu", admin_products_path if current_user.admin?
               %li= link_to "Sign Out", destroy_user_session_path, method: :delete
-              
