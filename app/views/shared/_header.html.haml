@@ -13,7 +13,7 @@
           = link_to "Products", root_path  
       %ul.nav.navbar-nav.navbar-right
         %li
-          = link_to '#' do
+          = link_to carts_path do
             Your Cart
             %i.fa.fa-shopping-cart (#{cart_items_count(current_cart)})
         - if !current_user
