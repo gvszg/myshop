@@ -20,3 +20,9 @@
 /config/secrets.yml
 
 public/uploads
+
+# Ignore Redis dump
+/dump.rdb
+
+# Ignore .DS_Store
+.DS_Store
