@@ -25,19 +25,32 @@ class Order < ActiveRecord::Base
   def generate_token
     self.token = SecureRandom.uuid
   end
+
+  def paid?
+    paid
+  end
+
+  def set_payment_with!(method)
+    update_column(:payment_method, method)
+  end
+
+  def pay!
+    update_column(:paid, true)
+  end
 end
 
 # == Schema Information
 #
 # Table name: orders
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  total      :integer          default(0)
-#  paid       :boolean          default(FALSE)
-#  created_at :datetime
-#  updated_at :datetime
-#  token      :string(255)
+#  id             :integer          not null, primary key
+#  user_id        :integer
+#  total          :integer          default(0)
+#  paid           :boolean          default(FALSE)
+#  created_at     :datetime
+#  updated_at     :datetime
+#  token          :string(255)
+#  payment_method :string(255)
 #
 # Indexes
 #
