@@ -1,0 +1,38 @@
+%article.order-show
+  .row
+    .col-md-12
+      %h2 訂單明細
+      %table.table.table-bordered
+        %thead
+          %tr
+            %th{:width => "70%"} 商品明細
+            %th 單價
+        %tbody
+          - @order_items.each do |order_item|
+            %tr
+              %td
+                = order_item.product_name
+              %td
+                = order_item.price
+      .total.clearfix
+        %span.pull-right
+          %span
+            總計 
+            %span#order-total #{@order.total} 
+            NTD
+      %hr
+        %h2 寄送資訊
+        %table.table.table-striped.table-bordered
+          %tbody
+          %tr
+            %td 訂購人
+          %tr
+            %td
+              = @order_info.billing_name
+              \- #{@order_info.billing_address}
+          %tr
+            %td 訂購人
+          %tr
+            %td
+              = @order_info.billing_name
+              \- #{@order_info.billing_address}

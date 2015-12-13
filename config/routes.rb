@@ -19,5 +19,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :carts, only: [:index]
+  resources :carts, only: [:index] do
+    collection do
+      post 'checkout'
+    end
+  end
+
+  resources :orders, only: [:create, :show]
 end

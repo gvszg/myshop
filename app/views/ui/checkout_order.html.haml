@@ -1,0 +1,37 @@
+%article.checkout-order
+  .row
+    .col-md-12
+      %h2 Order Items
+      %table.table.table-bordered
+        %thead
+          %tr
+            %th{width: "70%"} Item
+            %th Price
+        %tbody
+          - current_cart.items.each do |product|
+            %tr
+              %td
+                = link_to product.title, product
+              %td
+                = product.price
+      .total.clearfix
+        %span.pull-right
+          %span
+            Total #{cart_total_price(current_cart)} NTD
+      %hr
+        %h2 Order Info
+        .order-form
+          = bootstrap_form_for @order do |f|
+            = f.fields_for :info do |c|
+              %legend 訂購人
+              .col-sm-6
+                = c.text_field :billing_name
+              .col-sm-6
+                = c.text_field :billing_address
+              %legend 收貨人
+              .col-sm-6
+                = c.text_field :shipping_name
+              .col-sm-6
+                = c.text_field :shipping_address
+            .checkout
+              = f.submit "生成訂單", class: "btn btn-danger btn-lg pull-right"
