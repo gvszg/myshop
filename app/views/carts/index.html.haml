@@ -1,0 +1,28 @@
+%article.cart.items.index
+  .row
+    .col-md-12
+      %h2 Cart
+      %table.table.table-bordered
+        %thead
+          %tr
+            %th Item Photo
+            %th Item Name
+            %th Price
+        %tbody
+          - current_cart.items.each do |product|
+            %tr
+              %td= product_photo(product.default_photo)
+              %td
+                = link_to product.title, product
+              %td
+                = product.price
+      %br
+        .cart.total.clearfix
+          %p
+            %p 
+              Total 
+              %span#cart_index_price= cart_total_price(current_cart)
+              NTD              
+        %hr
+          .cart.checkout.clearfix
+            = link_to "Checkout", "#", class: "btn btn-danger btn-lg pull-right"
