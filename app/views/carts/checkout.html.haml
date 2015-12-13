@@ -24,10 +24,14 @@
           = bootstrap_form_for @order do |f|
             = f.fields_for :info do |c|
               %legend 訂購人
-              = c.text_field :billing_name
-              = c.text_field :billing_address
+              .col-sm-6
+                = c.text_field :billing_name
+              .col-sm-6
+                = c.text_field :billing_address
               %legend 收貨人
-              = c.text_field :shipping_name
-              = c.text_field :shipping_address
+              .col-sm-6
+                = c.text_field :shipping_name
+              .col-sm-6
+                = c.text_field :shipping_address
             .checkout
               = f.submit "生成訂單", class: "btn btn-danger btn-lg pull-right"
