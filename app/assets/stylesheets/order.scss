@@ -1,0 +1,18 @@
+article.order-show {
+  .row {
+    h2 {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    span {
+      font-size: 20px;
+
+      #order-total {
+        font-family: monospace;
+        color: #3DA43D;
+        font-size: larger;
+      }
+    }
+  }
+}

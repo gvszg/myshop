@@ -14,10 +14,11 @@
                 = link_to product.title, product
               %td
                 = product.price
-      .total.clearfix
-        %span.pull-right
-          %span
-            Total #{cart_total_price(current_cart)} NTD
+      .total.clearfix    
+        %p
+          Total 
+          %span.checkout-total #{cart_total_price(current_cart)} 
+          NTD
       %hr
         %h2 Order Info
         .order-form

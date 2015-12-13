@@ -1,0 +1,19 @@
+article.checkout-order {
+  .row {
+    h2 {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .total.clearfix {
+      text-align: right;
+      font-size: 20px;
+
+      span.checkout-total {
+        font-family: monospace;
+        color: #3DA43D;
+        font-size: larger;
+      }
+    }
+  }
+}
