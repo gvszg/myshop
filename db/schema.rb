@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213084406) do
+ActiveRecord::Schema.define(version: 20151213121545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,10 @@ ActiveRecord::Schema.define(version: 20151213084406) do
     t.boolean  "paid",       default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "token"
   end
+
+  add_index "orders", ["token"], name: "index_orders_on_token", using: :btree
 
   create_table "photos", force: true do |t|
     t.integer  "product_id"
