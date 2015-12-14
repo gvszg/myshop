@@ -12,6 +12,12 @@ article.cart.items.index {
         text-align: center;
       }
 
+      td.cart-item-amount {
+        .amount-update {
+          margin-top: 10px;
+        }
+      }
+
       span {
         i {
           font-size: 20px;

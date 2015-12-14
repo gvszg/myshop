@@ -10,14 +10,20 @@
             %th Item Photo
             %th Item Name
             %th Price
+            %th Amount
             %th Option
         %tbody
           - current_cart.cart_items.each do |item|
             %tr
               %td= product_photo(item.product.default_photo)
-              %td
-                = link_to item.product.title, item.product
+              %td= link_to item.product.title, item.product
               %td= item.product.price
+              %td.cart-item-amount{style: "width: 12%"}
+                = item.quantity
+                .amount-update 
+                  = form_for item, url: cart_item_path(current_cart, item) do |f|
+                    = f.select :quantity, [1, 2, 3, 4, 5]
+                    = f.submit "Update", class: "btn btn-default btn-sm"
               %td.clean-icon{style: "width: 7%"}
                 = link_to cart_item_path(current_cart, item), method: :delete do
                   %span
