@@ -1,6 +1,8 @@
 %article.cart.items.index
   .row
     .col-md-12
+      .cart-clean
+        = link_to "Clean Cart", clean_carts_path, method: :delete, data: { confirm: "Are you sure?" }, class: "pull-right"
       %h2 Cart
       %table.table.table-bordered
         %thead

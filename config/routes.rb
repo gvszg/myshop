@@ -19,12 +19,15 @@ Rails.application.routes.draw do
     end
   end
 
+  # carts
   resources :carts, only: [:index] do
     collection do
       post 'checkout'
+      delete 'clean'
     end
   end
 
+  # orders
   resources :orders, only: [:create, :show] do
     member do
       get 'pay_with_credit_card'

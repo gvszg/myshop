@@ -1,5 +1,5 @@
 article.cart.items.index {
-  .row
+  .row {
     h2 {
       font-size: 30px;
       margin-bottom: 10px;
@@ -15,4 +15,19 @@ article.cart.items.index {
         color: #509C04;        
       }
     }
+
+    .cart-clean {
+      margin-bottom: 25px;
+      font-size: 18px;
+
+      a {
+        border: 1px solid #1F64E2;
+        background-color: #FFEB3B;
+        border-radius: 5px;
+        padding: 5px;
+        text-decoration: none;
+        color: #31708f;
+      }
+    }
+  }
 }

@@ -8,4 +8,10 @@ class CartsController < ApplicationController
     @order = current_user.orders.build
     @info = @order.build_info # build_association
   end
+
+  def clean
+    current_cart.items.destroy_all
+    flash[:warning] = "Cart already cleaned!"
+    redirect_to carts_path
+  end
 end
