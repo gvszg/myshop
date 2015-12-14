@@ -15,6 +15,7 @@ gem 'carrierwave'
 gem "mini_magick"
 gem "nested_form"
 gem "font-awesome-rails"
+gem 'aasm'
 
 group :development do
   gem 'thin'

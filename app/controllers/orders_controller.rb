@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
   def pay_with_credit_card
     @order = Order.find_by(token: params[:id])
     @order.set_payment_with!("credit_card")
-    @order.pay!
+    @order.make_payment!
     flash[:notice] = "成功完成付款!"
     redirect_to '/'
   end
