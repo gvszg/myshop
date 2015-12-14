@@ -10,14 +10,18 @@
             %th Item Photo
             %th Item Name
             %th Price
+            %th Option
         %tbody
-          - current_cart.items.each do |product|
+          - current_cart.cart_items.each do |item|
             %tr
-              %td= product_photo(product.default_photo)
+              %td= product_photo(item.product.default_photo)
               %td
-                = link_to product.title, product
-              %td
-                = product.price
+                = link_to item.product.title, item.product
+              %td= item.product.price
+              %td.clean-icon{style: "width: 7%"}
+                = link_to cart_item_path(current_cart, item), method: :delete do
+                  %span
+                    %i.fa.fa-trash
       %br
         .cart.total.clearfix
           %p

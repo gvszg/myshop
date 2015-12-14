@@ -5,6 +5,20 @@ article.cart.items.index {
       margin-bottom: 10px;
     }
 
+    table.table {
+      font-size: 16px;
+
+      td.clean-icon {
+        text-align: center;
+      }
+
+      span {
+        i {
+          font-size: 20px;
+        }
+      }
+    }
+
     .cart.total {
       font-size: 20px;
       font-weight: bolder;

@@ -25,6 +25,8 @@ Rails.application.routes.draw do
       post 'checkout'
       delete 'clean'
     end
+
+    resources :items, :controller => "cart_items"
   end
 
   # orders
