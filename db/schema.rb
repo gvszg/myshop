@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213121545) do
+ActiveRecord::Schema.define(version: 20151214112252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,13 +49,16 @@ ActiveRecord::Schema.define(version: 20151213121545) do
 
   create_table "orders", force: true do |t|
     t.integer  "user_id"
-    t.integer  "total",      default: 0
-    t.boolean  "paid",       default: false
+    t.integer  "total",          default: 0
+    t.boolean  "paid",           default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "token"
+    t.string   "payment_method"
+    t.string   "aasm_state",     default: "order_placed"
   end
 
+  add_index "orders", ["aasm_state"], name: "index_orders_on_aasm_state", using: :btree
   add_index "orders", ["token"], name: "index_orders_on_token", using: :btree
 
   create_table "photos", force: true do |t|

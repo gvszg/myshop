@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
       @order.build_item_cache_from_cart(current_cart)
       # calculate total price
       @order.calculate_total!(current_cart)
-      redirect_to @order
+      redirect_to order_path(@order.token) # correct URL with token
     else
       flash.now[:alert] = "Please check all your information!"
       render "carts/checkout"
@@ -20,6 +20,14 @@ class OrdersController < ApplicationController
     @order = Order.find_by(token: params[:id])
     @order_info = @order.info
     @order_items = @order.items
+  end
+
+  def pay_with_credit_card
+    @order = Order.find_by(token: params[:id])
+    @order.set_payment_with!("credit_card")
+    @order.make_payment!
+    flash[:notice] = "成功完成付款!"
+    redirect_to '/'
   end
 
   private

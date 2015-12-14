@@ -36,3 +36,9 @@
             %td
               = @order_info.billing_name
               \- #{@order_info.billing_address}
+        - if !@order.paid?
+          .order-pay.pull-right
+            = link_to "以信用卡付款", pay_with_credit_card_order_path(@order.token), class: 'btn btn-danger btn-lg'
+            = link_to "以 ATM 付款", "#", class: 'btn btn-danger btn-lg'
+        - else
+          此訂單已完成付款

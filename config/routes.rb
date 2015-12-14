@@ -25,5 +25,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :orders, only: [:create, :show]
+  resources :orders, only: [:create, :show] do
+    member do
+      get 'pay_with_credit_card'
+    end
+  end
 end
