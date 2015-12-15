@@ -1,0 +1,40 @@
+%article.admin-order-state
+  .row
+    .col-md-12
+      %h2 訂單明細 (#{order_paid_state(@order)})
+      = order_options_for_admin(@order)
+      %table.table.table-bordered
+        %thead
+          %tr
+            %th{:width => "80%"} 商品明細
+            %th 單價
+            %th 數量
+        %tbody
+          - @order_items.each do |order_item|
+            %tr
+              %td
+                = order_item.product_name
+              %td
+                = order_item.price
+              %td
+                = order_item.quantity
+      .total.clearfix
+        %span.pull-right
+          %span
+            總計 #{@order.total} NTD
+      %hr
+        %h2 寄送資訊
+        %table.table.table-striped.table-bordered
+          %tbody
+            %tr
+              %td 訂購人
+            %tr
+              %td
+                = @order_info.billing_name
+                \- #{@order_info.billing_address}
+            %tr
+              %td 訂購人
+            %tr
+              %td
+                = @order_info.billing_name
+                \- #{@order_info.billing_address}
