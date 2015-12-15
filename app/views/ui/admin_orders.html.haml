@@ -1,0 +1,19 @@
+%h2 訂單列表
+%table.table.table-bordered
+  %thead
+    %tr
+      %th #
+      %th 生成時間
+      %th 訂購者
+      %th 訂單狀態
+  %tbody
+    - @orders.each do |order|
+      %tr
+        %td
+          = link_to(order.id, admin_order_path(order) )
+        %td
+          = render_order_timestamp(order)
+        %td
+          = order.user.email
+        %td
+          = render_order_state(order)
