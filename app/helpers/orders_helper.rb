@@ -12,7 +12,7 @@ module OrdersHelper
   end
 
   def order_paid_state(order)
-    if order.paid?
+    if order.paid
       "已付款"
     else
       "未付款"

@@ -1,7 +1,9 @@
 %article.admin-order-state
   .row
     .col-md-12
-      %h2 訂單明細 (#{order_paid_state(@order)})
+      %h2 
+        訂單明細:
+        %span#pay-state (#{order_paid_state(@order)})
       = order_options_for_admin(@order)
       %table.table.table-bordered
         %thead
@@ -21,7 +23,9 @@
       .total.clearfix
         %span.pull-right
           %span
-            總計 #{@order.total} NTD
+            總計 
+            %span#admin-order-toal #{@order.total}
+            NTD
       %hr
         %h2 寄送資訊
         %table.table.table-striped.table-bordered
