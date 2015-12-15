@@ -1,28 +1,40 @@
 %article.cart.items.index
   .row
     .col-md-12
-      %h2 Cart
+      .cart-clean
+        = link_to "清空購物車", clean_carts_path, method: :delete, data: { confirm: "Are you sure?" }, class: "pull-right"
+      %h2 購物車
       %table.table.table-bordered
         %thead
           %tr
-            %th Item Photo
-            %th Item Name
-            %th Price
+            %th 商品圖片
+            %th 商品名稱
+            %th 商品售價
+            %th 購買數量
+            %th 選項
         %tbody
-          - current_cart.items.each do |product|
+          - current_cart.cart_items.each do |item|
             %tr
-              %td= product_photo(product.default_photo)
-              %td
-                = link_to product.title, product
-              %td
-                = product.price
+              %td= product_photo(item.product.default_photo)
+              %td= link_to item.product.title, item.product
+              %td= item.product.price
+              %td.cart-item-amount{style: "width: 12%"}
+                = item.quantity
+                .amount-update 
+                  = form_for item, url: cart_item_path(current_cart, item) do |f|
+                    = f.select :quantity, [1, 2, 3, 4, 5]
+                    = f.submit "Update", class: "btn btn-default btn-sm"
+              %td.clean-icon{style: "width: 7%"}
+                = link_to cart_item_path(current_cart, item), method: :delete do
+                  %span
+                    %i.fa.fa-trash
       %br
         .cart.total.clearfix
           %p
             %p 
-              Total 
+              總計
               %span#cart_index_price= cart_total_price(current_cart)
               NTD              
         %hr
           .cart.checkout.clearfix
-            = link_to "Checkout", checkout_carts_path, method: :post, class: "btn btn-danger btn-lg pull-right"
+            = link_to "確認結帳", checkout_carts_path, method: :post, class: "btn btn-danger btn-lg pull-right"

@@ -10,11 +10,11 @@
     #navbar.navbar-collapse.collapse
       %ul.nav.navbar-nav
         %li.active
-          = link_to "Products", root_path  
+          = link_to "商品", root_path  
       %ul.nav.navbar-nav.navbar-right
         %li
           = link_to carts_path do
-            Your Cart
+            購物車
             %i.fa.fa-shopping-cart (#{cart_items_count(current_cart)})
         - if !current_user
           %li= link_to "Sign In", new_user_session_path
