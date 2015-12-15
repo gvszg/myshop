@@ -35,4 +35,9 @@ Rails.application.routes.draw do
       get 'pay_with_credit_card'
     end
   end
+
+  # account::order
+  namespace :account do
+    resources :orders, only: [:index]
+  end
 end

@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
     # @order.pay!
     @order.make_payment!
     flash[:notice] = "成功完成付款!"
-    redirect_to '/'
+    redirect_to account_orders_path
   end
 
   private
