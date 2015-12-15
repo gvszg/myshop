@@ -1,38 +1,38 @@
 %article.checkout-order
   .row
     .col-md-12
-      %h2 Order Items
+      %h2 購物明細
       %table.table.table-bordered
         %thead
           %tr
-            %th{width: "70%"} Item
-            %th Price
+            %th{width: "70%"} 商品明細
+            %th 單價
+            %th 數量
         %tbody
-          - current_cart.items.each do |product|
+          - current_cart.cart_items.each do |cart_item|
             %tr
-              %td
-                = link_to product.title, product
-              %td
-                = product.price
+              %td= link_to cart_item.product.title, cart_item.product
+              %td= cart_item.product.price
+              %td= cart_item.quantity
       .total.clearfix    
         %p
-          Total 
+          總計
           %span.checkout-total #{cart_total_price(current_cart)} 
           NTD
       %hr
-        %h2 Order Info
+        %h2 訂單資訊
         .order-form
           = bootstrap_form_for @order do |f|
             = f.fields_for :info do |c|
               %legend 訂購人
               .col-sm-6
-                = c.text_field :billing_name
+                = c.text_field :billing_name, label: "訂購人姓名"
               .col-sm-6
-                = c.text_field :billing_address
+                = c.text_field :billing_address, label: "訂購人地址"
               %legend 收貨人
               .col-sm-6
-                = c.text_field :shipping_name
+                = c.text_field :shipping_name, label: "收貨人姓名"
               .col-sm-6
-                = c.text_field :shipping_address
+                = c.text_field :shipping_address, label: "收貨人地址"
             .checkout
               = f.submit "生成訂單", class: "btn btn-danger btn-lg pull-right"
