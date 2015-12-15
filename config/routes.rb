@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   get 'ui(/:action)', controller: 'ui'
 
   # admin products
+  # admin orders
   namespace :admin do
     resources :products
+    resources :orders
   end
 
   # users

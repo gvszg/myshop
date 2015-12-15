@@ -15,8 +15,8 @@
       .row
         .col-md-1
           %ul.nav.nav-pills.nav-stacked
-            %li
-              = link_to("Products", admin_products_path)
+            %li= link_to("Products", admin_products_path)
+            %li= link_to "Orders", admin_orders_path
         .dashboard.row.col-md-offset-1
           %h1 Dashboard
           = yield

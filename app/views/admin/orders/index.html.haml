@@ -1,0 +1,16 @@
+%article.admin-orders-index
+  %h2 管理員訂單列表
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th 訂單ID
+        %th 生成時間
+        %th 訂購者
+        %th 訂單狀態
+    %tbody
+      - @orders.each do |order|
+        %tr
+          %td= link_to order.id, admin_order_path(order)
+          %td= order_timestamp(order)
+          %td= order.user.email
+          %td= order_state(order)
