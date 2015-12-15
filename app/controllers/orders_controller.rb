@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
       @order.calculate_total!(current_cart)
       # delete all items in cart
       current_cart.clean!
+      OrderMailer.notify_order_placed(@order).deliver!
       redirect_to order_path(@order.token) # correct URL with token
     else
       flash.now[:alert] = "請確認所有欄位資訊!"

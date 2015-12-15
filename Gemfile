@@ -16,6 +16,7 @@ gem "mini_magick"
 gem "nested_form"
 gem "font-awesome-rails"
 gem 'aasm'
+gem 'roadie', '~> 3.1.1'
 
 group :development do
   gem 'thin'
