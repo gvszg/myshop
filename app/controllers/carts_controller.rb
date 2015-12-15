@@ -10,7 +10,7 @@ class CartsController < ApplicationController
   end
 
   def clean
-    current_cart.items.destroy_all
+    current_cart.clean!
     flash[:warning] = "Cart already cleaned!"
     redirect_to carts_path
   end

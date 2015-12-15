@@ -22,7 +22,7 @@
                 = item.quantity
                 .amount-update 
                   = form_for item, url: cart_item_path(current_cart, item) do |f|
-                    = f.select :quantity, [1, 2, 3, 4, 5]
+                    = f.select :quantity, 1..item.product.quantity
                     = f.submit "Update", class: "btn btn-default btn-sm"
               %td.clean-icon{style: "width: 7%"}
                 = link_to cart_item_path(current_cart, item), method: :delete do

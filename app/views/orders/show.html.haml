@@ -7,13 +7,13 @@
           %tr
             %th{:width => "70%"} 商品明細
             %th 單價
+            %th 數量
         %tbody
           - @order_items.each do |order_item|
             %tr
-              %td
-                = order_item.product_name
-              %td
-                = order_item.price
+              %td= order_item.product_name
+              %td= order_item.price
+              %td= order_item.quantity
       .total.clearfix
         %span.pull-right
           %span
