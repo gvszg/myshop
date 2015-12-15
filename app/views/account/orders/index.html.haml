@@ -1,0 +1,12 @@
+%article.account-order-index
+  %h2 訂單列表
+  %table.table.table-bordered
+    %thead
+      %tr
+        %th #
+        %th 生成時間
+    %tbody
+      - @orders.each do |order|
+        %tr
+          %td= link_to order.id, order_path(order.token)
+          %td= order.created_at.to_s(:long)

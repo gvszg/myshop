@@ -9,45 +9,8 @@ class Order < ActiveRecord::Base
 
   before_create :generate_token
 
-  aasm do
-    state :order_placed, initial: true
-    state :paid
-    state :shipping
-    state :shipped
-    state :order_cancelled
-    state :good_returned
-
-    event :make_payment, after_commit: :pay! do
-      transition from: :order_placed, to: :paid 
-    end
-
-    event :ship do
-      transition from: :paid,         to: :shipping
-    end
-
-    event :deliver do
-      transition from: :shipping,     to: :shipped
-    end
-
-    event :returned_good do
-      transition from: :shipped,      to: :good_returned
-    end
-
-    event :cancel_order do
-      transition from: [:order_placed, :paid], to: :order_cancelled
-    end
-  end
-
-  def build_item_cache_from_cart(cart)
-    cart.cart_items.each do |cart_item|
-      item = items.build
-      item.product_name = cart_item.product.title
-      item.quantity = cart_item.quantity
-      item.price = cart_item.product.price
-      item.save
-    end
-  end
-
+  scope :recent, -> { order("id DESC") }
+  
   def calculate_total!(cart)
     self.total = cart.total_price
     self.save
@@ -68,6 +31,45 @@ class Order < ActiveRecord::Base
   def pay!
     update_column(:paid, true)
   end
+
+  def build_item_cache_from_cart(cart)
+    cart.cart_items.each do |cart_item|
+      item = items.build
+      item.product_name = cart_item.product.title
+      item.quantity = cart_item.quantity
+      item.price = cart_item.product.price
+      item.save
+    end
+  end
+
+  aasm do
+    state :order_placed, initial: true
+    state :paid
+    state :shipping
+    state :shipped
+    state :order_cancelled
+    state :good_returned
+
+    event :make_payment, after_commit: :pay! do
+      transitions from: :order_placed, to: :paid 
+    end
+
+    event :ship do
+      transitions from: :paid,         to: :shipping
+    end
+
+    event :deliver do
+      transitions from: :shipping,     to: :shipped
+    end
+
+    event :returned_good do
+      transitions from: :shipped,      to: :good_returned
+    end
+
+    event :cancel_order do
+      transitions from: [:order_placed, :paid], to: :order_cancelled
+    end
+  end 
 end
 
 # == Schema Information
