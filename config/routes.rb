@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:create, :show] do
     member do
       get 'pay_with_credit_card'
+      post 'allpay_notify'
     end
   end
 

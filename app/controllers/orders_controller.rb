@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :allpay_notify
+
+  protect_from_forgery except: :allpay_notify
 
   def create
     @order = current_user.orders.build(order_params)
@@ -32,6 +34,22 @@ class OrdersController < ApplicationController
     @order.make_payment!
     flash[:notice] = "成功完成付款!"
     redirect_to account_orders_path
+  end
+
+  def allpay_notify
+    order = Order.find_by(token: params[:id])
+    payment_type = params[:payment_type]
+
+    if params[:RtnCode] == "1"
+      order.set_payment_with!(payment_type)
+      order.make_payment!
+      render text: "1|OK", status: 200
+      flash[:notice] = "交易成功！"
+      redirect_to account_orders_path
+    else
+      flash[:alert] = "交易失敗，請檢查帳務資料！"
+      redirect_to :back
+    end
   end
 
   private

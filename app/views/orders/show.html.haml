@@ -36,13 +36,9 @@
             %td
               = @order_info.billing_name
               \- #{@order_info.billing_address}
-        - if !@order.paid?
-          .order-pay
-            %form.pay-credit-card
-              = payment_service_button(@order, "credit_card")
-            %form.pay-cvs
-              = payment_service_button(@order, "cvs")
-            %form.pay-atm
-              = payment_service_button(@order, "atm")                        
+        - if !@order.paid?        
+          = payment_service_button(@order, "credit_card")            
+          = payment_service_button(@order, "cvs")            
+          = payment_service_button(@order, "atm")                        
         - else
           #order-closed 此訂單已完成付款
