@@ -80,4 +80,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.integration_mode = :development # TODO:取得正式 key 以後再改成 :production
+  end
 end
