@@ -12,6 +12,9 @@
           = f.text_field :quantity, label: "Quantity"
                   
           = f.text_field :price, label: "Price"
+
+          = f.fields_for :photos do |photo|
+            = photo.file_field :image, label: "Image"
         %fieldset.actions.control-group.col-sm-offset-2
           .controls  
             = f.submit "Submit", class: "btn btn-default"
