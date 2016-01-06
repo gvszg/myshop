@@ -84,4 +84,15 @@ Rails.application.configure do
   config.after_initialize do
     ActiveMerchant::Billing::Base.integration_mode = :development # TODO:取得正式 key 以後再改成 :production
   end
+
+  config.action_mailer.default_url_options = { host: "myshop-demo.herokuapp.com" }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :port           => ENV['MAILGUN_SMTP_PORT'],
+    :address        => ENV['MAILGUN_SMTP_SERVER'],
+    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+    :domain         => ENV['MAILGUN_SMTP_DOMAIN'],
+    :authentication => :plain
+  }  
 end

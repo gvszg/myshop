@@ -13,6 +13,7 @@ gem 'haml-rails'
 gem 'devise'
 gem 'carrierwave'
 gem "mini_magick"
+gem 'carrierwave-aws'
 gem "nested_form"
 gem "font-awesome-rails"
 gem 'aasm'
