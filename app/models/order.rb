@@ -1,4 +1,5 @@
 class Order < ActiveRecord::Base
+  include Tokenable
   include AASM
 
   belongs_to :user
@@ -7,17 +8,11 @@ class Order < ActiveRecord::Base
 
   accepts_nested_attributes_for :info
 
-  before_create :generate_token
-
   scope :recent, -> { order("id DESC") }
   
   def calculate_total!(cart)
     self.total = cart.total_price
     self.save
-  end
-
-  def generate_token
-    self.token = SecureRandom.uuid
   end
 
   def paid?
