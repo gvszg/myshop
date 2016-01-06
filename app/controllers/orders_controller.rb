@@ -7,13 +7,7 @@ class OrdersController < ApplicationController
     @order = current_user.orders.build(order_params)
 
     if @order.save
-      # cache items in the cart
-      @order.build_item_cache_from_cart(current_cart)
-      # calculate total price
-      @order.calculate_total!(current_cart)
-      # delete all items in cart
-      current_cart.clean!
-      OrderMailer.notify_order_placed(@order).deliver!
+      OrderPlacingService.new(current_cart, @order).place_order!
       redirect_to order_path(@order.token) # correct URL with token
     else
       flash.now[:alert] = "請確認所有欄位資訊!"
